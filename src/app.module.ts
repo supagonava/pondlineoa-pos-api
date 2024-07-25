@@ -1,4 +1,4 @@
-import { MiddlewareConsumer, Module, RequestMethod } from '@nestjs/common';
+import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
@@ -10,10 +10,9 @@ import { User } from './user/entities/user.entity';
 import { Order, OrderProductItem } from './order/entities/order.entity';
 import { Product, ProductOption } from './product/entities/product.entity';
 import { Restaurant } from './restaurant/entities/restaurant.entity';
-import { AppDataSource } from './data-source'; // นำเข้า DataSource ที่สร้างไว้
-import * as fs from 'fs';
 import * as path from 'path';
-import { CheckLineIdMiddleware } from './middlewares';
+import { AzureBlobService } from './azure-blob.service';
+import { DatabaseSyncController } from './database-sync.controller';
 
 const dbPath = path.join(path.dirname(__filename), '../database.sqlite');
 export const ALL_ENTITIES = [
@@ -39,17 +38,7 @@ export const ALL_ENTITIES = [
     OrderModule,
     ProductModule,
   ],
-  controllers: [AppController],
-  providers: [AppService],
+  controllers: [AppController, DatabaseSyncController],
+  providers: [AppService, AzureBlobService],
 })
-export class AppModule {
-  // configure(consumer: MiddlewareConsumer) {
-  //   consumer
-  //     .apply(CheckLineIdMiddleware)
-  //     .exclude(
-  //       { path: 'api/user/sso-lineid', method: RequestMethod.ALL },
-  //       { path: 'api/user/line-webhook', method: RequestMethod.ALL },
-  //     )
-  //     .forRoutes('*');
-  // }
-}
+export class AppModule {}
