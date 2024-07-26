@@ -1,4 +1,5 @@
 # Use an official Node runtime as a parent image
+# docker build --platform linux/amd64 . -t kaoprogramerapi:latest
 FROM node:18-alpine
 
 # Set the working directory

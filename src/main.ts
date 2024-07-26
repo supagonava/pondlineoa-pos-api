@@ -12,7 +12,7 @@ async function bootstrap() {
   app.enableCors();
   app.useGlobalPipes(new ValidationPipe());
 
-  Logger.log(`App listent at port ${process.env?.PORT || '8080'}`);
-  await app.listen(parseInt(process.env?.PORT || '8080'));
+  Logger.log(`App listent at port ${process.env?.PORT || '3001'}`);
+  await app.listen(parseInt(process.env?.PORT || '3001'));
 }
 bootstrap();

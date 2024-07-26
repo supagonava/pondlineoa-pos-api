@@ -21,6 +21,7 @@
   },
   "dependencies": {
     "@azure/storage-blob": "^12.24.0",
+    "@nestjs/azure-database": "^3.0.0",
     "@nestjs/azure-storage": "^3.0.0",
     "@nestjs/class-transformer": "^0.4.0",
     "@nestjs/cli": "^10.0.0",

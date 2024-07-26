@@ -3,7 +3,8 @@
         "node_modules{,/**}",
         ".vscode{,/**}",
         ".env",
-        "dist/*"
+        "dist/*",
+        "*.lock"
     ],
     "appService.defaultWebAppToDeploy": "None"
 }
